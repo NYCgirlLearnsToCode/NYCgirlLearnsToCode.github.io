@@ -1,9 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+    <title></title>
 </head>
 <body>
-	<p>Hello World</p>
+    <div class = "center">
+    <p id = "m"></p>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+
+<script>
+    var config = {
+        apiKey: "AIzaSyDr_-nJqnnHIUnOZfKJMxDuTyH4aeVPe6Y",
+        authDomain: "inspo-box.firebaseapp.com",
+        databaseURL: "https://inspo-box.firebaseio.com/"
+    }
+    var app = firebase.initializeApp(config);
+
+    var ref = app.database().ref('messages');
+
+    ref.limitToLast(1).on('value', function(snapshot) {
+        console.log(snapshot.val());
+    var messages = snapshot.val()
+    var keys = Object.keys(messages)
+    document.getElementById("m").innerHTML = "wow "+ messages[keys[0]].inspoMessage
+ 
+      // console.log(messages["-LAVjoFWWVHbU0EtUWQF"].inspoMessage)
+ //console.log(keys)
+    });
+  
+
+  console.log("hello");
+
+</script>
+
 </body>
+<style>
+
+.center {
+    padding: 300px 0;
+    border: 3px solid green;
+    text-align: center;
+    font-size: 200%
+}
+</style>
 </html>
