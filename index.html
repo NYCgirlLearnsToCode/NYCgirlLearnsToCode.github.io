@@ -4,9 +4,11 @@
     <title></title>
 </head>
 <body>
-    <div class = "center">
-    <p id = "m"></p>
-    </div>
+	<div id = "parent">
+	    <div class = "center">
+	    <p id = "m"></p>
+	    </div>
+	 </div>
     <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
 
 <script>
@@ -23,7 +25,7 @@
         console.log(snapshot.val());
     var messages = snapshot.val()
     var keys = Object.keys(messages)
-    document.getElementById("m").innerHTML = "wow "+ messages[keys[0]].inspoMessage
+    document.getElementById("m").innerHTML = messages[keys[0]].inspoMessage
  
       // console.log(messages["-LAVjoFWWVHbU0EtUWQF"].inspoMessage)
  //console.log(keys)
@@ -36,15 +38,19 @@
 
 </body>
 <style>
+#parent {display: table;}
 
 .center {
+	display: table-cell;
     width: 100%;
+ 	position: fixed;
     height: 100%;
-    max-height: 100%;
-    margin: 0;
+    left: 0;
+    top: 0;
+    z-index: 10;
     padding: 300px 0;
-    border: 3px solid green;
     text-align: center;
+    vertical-align: middle;
     font-size: 200%;
     color: white;
     background-color: black;
